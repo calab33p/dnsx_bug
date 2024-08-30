@@ -1,0 +1,20 @@
+.:53 {
+    forward . 8.8.8.8 9.9.9.9
+    log
+    errors
+}
+
+example.org:53 {
+	file /data/example.org.db
+	prometheus
+	errors
+	log
+}
+
+timeout.example.com:53 {
+	rewrite type CNAME A
+	erratic {
+		drop 1
+	}
+}
+
